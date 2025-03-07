@@ -6,7 +6,7 @@ OptionsData.py => Fetches and cleans MSFT call option data from yfinance, stores
 
 RoughBergomi.py => Implements a numerical approximation of the price and implied volatility of a European call option under the rough Bergomi asset dynamics.
 
-SyntheticRBergomi.py => Generates ~750,000 points of data mapping the 6 rough Bergomi parameters, strike and maturiy to an implied volatility using the functions implemented in the RoughBergomi.py file. Saves data to rbergomi_dataset_final.csv
+SyntheticRBergomi.py => Generates ~1 million points of data mapping the 6 rough Bergomi parameters, strike and maturiy to an implied volatility using the functions implemented in the RoughBergomi.py file. Saves data to rbergomi_dataset_final.csv
 
 NeuralNetwork.py => Trains a neural network on the rbergomi_dataset_final.csv file to approximate the numerical approximation at a significantly higher speed. The network takes in 8 parameters and outputs an implied volatility, and then saves the trained network to rbergomi_model.pth.
 
