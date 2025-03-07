@@ -53,8 +53,6 @@ spline = SmoothBivariateSpline(
 )
 target_iv_surface = spline.ev(strike_mesh.ravel(), maturity_mesh.ravel()).reshape(len(maturity_grid), len(strike_grid))
 
-import numpy as np
-import torch
 def calibration_loss(params, model, target_iv_surface, strike_grid, maturity_grid, X_scaler):
 
     a, b, c, eta, rho, H = params
@@ -128,13 +126,9 @@ else:
 
 
 def generate_nn_iv_surface(model, params, strike_grid, maturity_grid, X_scaler):
-    """
-    Generate the implied volatility surface from the trained NN model given calibrated parameters.
-    params should be [a, b, c, eta, rho, H].
-    """
+
     a, b, c, eta, rho, H = params
-    
-    # Create a grid of strikes (K) and maturities (T)
+
     K, T = np.meshgrid(strike_grid, maturity_grid)
     K_flat = K.ravel()
     T_flat = T.ravel()
